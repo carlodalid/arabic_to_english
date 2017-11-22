@@ -25,6 +25,8 @@ module Translator
       translate_two_digits(num_arr)
     when 3
       translate_three_digits(num_arr)
+    when 4
+      translate_four_digits(num_arr)
     end
   end
 
@@ -54,6 +56,23 @@ module Translator
       "#{ONES[hund]} hundred #{ONES[ones]}"
     else
       "#{ONES[hund]} hundred #{translate_two_digits(param[1..2])}"
+    end
+  end
+
+  def self.translate_four_digits(param)
+    ones = param[3].to_i
+    tens = param[2].to_i
+    hund = param[1].to_i
+    thou = param[0].to_i
+
+    if hund === 0 && tens === 0 && ones === 0
+      "#{ONES[thou]} thousand"
+    elsif hund === 0 && tens === 0
+      "#{ONES[thou]} thousand #{ONES[ones]}"
+    elsif (hund === 0 && ones === 0) || hund === 0
+      "#{ONES[thou]} thousand #{translate_two_digits(param[2..3])}"
+    else
+      "#{ONES[thou]} thousand #{translate_three_digits(param[1..3])}"
     end
   end
 end
