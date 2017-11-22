@@ -4,6 +4,11 @@ module Translator
     'five', 'six', 'seven', 'eight', 'nine'
   ]
 
+  TEENS = [
+    'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+    'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+  ]
+
   TYS = [
     'zero', 'ten', 'twenty', 'thirty', 'forty',
     'fifty', 'sixty', 'seventy', 'eighty', 'ninety'
@@ -29,6 +34,10 @@ module Translator
 
     if ones === 0
       "#{TYS[tens]}"
+    elsif tens === 1
+      "#{TEENS[ones]}"
+    else
+      "#{TYS[tens]} #{ONES[ones]}"
     end
   end
 end
