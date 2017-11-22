@@ -14,6 +14,14 @@ describe 'Arabic2English' do
     it 'should translate 10 to ten' do
       expect { Arabic2English.translate(10) }.to output("ten\n").to_stdout
     end
+
+    it 'should translate 15 to fifteen' do
+      expect { Arabic2English.translate(15) }.to output("fifteen\n").to_stdout
+    end
+
+    it 'should translate 77 to seventy seven' do
+      expect { Arabic2English.translate(77) }.to output("seventy seven\n").to_stdout
+    end
   end
 
   describe 'when given an invalid input' do
