@@ -1,7 +1,9 @@
+require './lib/translator'
+
 class Arabic2English
   def self.translate(param)
     if param.is_a? Integer
-      puts "zero"
+      puts Translator.translate(param)
     else
       puts "Invalid input!"
     end
