@@ -23,6 +23,8 @@ module Translator
       ONES[param]
     when 2
       translate_two_digits(num_arr)
+    when 3
+      translate_three_digits(num_arr)
     end
   end
 
@@ -38,6 +40,20 @@ module Translator
       "#{TEENS[ones]}"
     else
       "#{TYS[tens]} #{ONES[ones]}"
+    end
+  end
+
+  def self.translate_three_digits(param)
+    ones = param[2].to_i
+    tens = param[1].to_i
+    hund = param[0].to_i
+
+    if ones === 0 && tens === 0
+      "#{ONES[hund]} hundred"
+    elsif tens === 0
+      "#{ONES[hund]} hundred #{ONES[ones]}"
+    else
+      "#{ONES[hund]} hundred #{translate_two_digits(param[1..2])}"
     end
   end
 end
