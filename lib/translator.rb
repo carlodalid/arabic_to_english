@@ -50,12 +50,14 @@ module Translator
     tens = param[1].to_i
     hund = param[0].to_i
 
+    hundreds = ONES[hund]
+
     if ones === 0 && tens === 0
-      "#{ONES[hund]} hundred"
+      "#{hundreds} hundred"
     elsif tens === 0
-      "#{ONES[hund]} hundred #{ONES[ones]}"
+      "#{hundreds} hundred #{ONES[ones]}"
     else
-      "#{ONES[hund]} hundred #{translate_two_digits(param[1..2])}"
+      "#{hundreds} hundred #{translate_two_digits(param[1..2])}"
     end
   end
 
@@ -65,14 +67,16 @@ module Translator
     hund = param[1].to_i
     thou = param[0].to_i
 
+    thousands = ONES[thou]
+
     if hund === 0 && tens === 0 && ones === 0
-      "#{ONES[thou]} thousand"
+      "#{thousands} thousand"
     elsif hund === 0 && tens === 0
-      "#{ONES[thou]} thousand #{ONES[ones]}"
+      "#{thousands} thousand #{ONES[ones]}"
     elsif (hund === 0 && ones === 0) || hund === 0
-      "#{ONES[thou]} thousand #{translate_two_digits(param[2..3])}"
+      "#{thousands} thousand #{translate_two_digits(param[2..3])}"
     else
-      "#{ONES[thou]} thousand #{translate_three_digits(param[1..3])}"
+      "#{thousands} thousand #{translate_three_digits(param[1..3])}"
     end
   end
 end
