@@ -22,6 +22,22 @@ describe 'Arabic2English' do
     it 'should translate 77 to seventy seven' do
       expect { Arabic2English.translate(77) }.to output("seventy seven\n").to_stdout
     end
+
+    it 'should translate 100 to one hundred' do
+      expect { Arabic2English.translate(100) }.to output("one hundred\n").to_stdout
+    end
+
+    it 'should translate 307 to three hundred seven' do
+      expect { Arabic2English.translate(307) }.to output("three hundred seven\n").to_stdout
+    end
+
+    it 'should translate 550 to five hundred fifty' do
+      expect { Arabic2English.translate(550) }.to output("five hundred fifty\n").to_stdout
+    end
+
+    it 'should translate 888 to eight hundred eighty eight' do
+      expect { Arabic2English.translate(888) }.to output("eight hundred eighty eight\n").to_stdout
+    end
   end
 
   describe 'when given an invalid input' do
